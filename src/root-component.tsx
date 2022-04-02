@@ -12,17 +12,16 @@ import React from 'react';
 import {
   SafeAreaView,
   StatusBar,
-  StyleSheet,
   useColorScheme,
   View,
   TouchableHighlight,
   FlatList,
 } from 'react-native';
-import {Header, ListItem} from '@react-native-elements/themed';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {useQuery, gql} from '@apollo/client';
+import { Header, ListItem } from '@react-native-elements/themed';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
+import { useQuery, gql } from '@apollo/client';
 
-import {AllPeopleQueryResult} from './__generated__/graphql';
+import { AllPeopleQueryResult } from './__generated__/graphql';
 
 const App = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -31,7 +30,7 @@ const App = () => {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
-  const {data, loading}: AllPeopleQueryResult = useQuery(gql`
+  const { data }: AllPeopleQueryResult = useQuery(gql`
     {
       allPeople {
         edges {
@@ -52,14 +51,14 @@ const App = () => {
         barStyle="default"
         centerComponent={{
           text: 'IH Challenge',
-          style: {color: '#fff'},
+          style: { color: '#fff' },
         }}
         centerContainerStyle={{}}
-        leftComponent={{icon: 'menu', color: '#fff'}}
+        leftComponent={{ icon: 'menu', color: '#fff' }}
         leftContainerStyle={{}}
         linearGradientProps={{}}
         placement="center"
-        rightComponent={{icon: 'home', color: '#fff'}}
+        rightComponent={{ icon: 'home', color: '#fff' }}
         rightContainerStyle={{}}
         statusBarProps={{}}
       />
@@ -69,35 +68,17 @@ const App = () => {
         }}>
         <FlatList
           data={data?.allPeople?.edges}
-          renderItem={({item: edge}) => (
+          renderItem={({ item: edge }) => (
             <ListItem Component={TouchableHighlight} key={edge?.node?.id}>
               <ListItem.Content>
                 <ListItem.Title>{edge?.node?.name}</ListItem.Title>
               </ListItem.Content>
             </ListItem>
-          )}></FlatList>
+          )}
+        />
       </View>
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-});
 
 export default App;

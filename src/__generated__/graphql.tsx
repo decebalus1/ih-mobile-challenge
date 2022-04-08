@@ -2,9 +2,15 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -33,14 +39,12 @@ export type Root = {
   vehicle?: Maybe<Vehicle>;
 };
 
-
 export type RootAllFilmsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type RootAllPeopleArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -49,14 +53,12 @@ export type RootAllPeopleArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type RootAllPlanetsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type RootAllSpeciesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -65,14 +67,12 @@ export type RootAllSpeciesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type RootAllStarshipsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 export type RootAllVehiclesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -81,41 +81,34 @@ export type RootAllVehiclesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 export type RootFilmArgs = {
   filmID?: InputMaybe<Scalars['ID']>;
   id?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type RootNodeArgs = {
   id: Scalars['ID'];
 };
-
 
 export type RootPersonArgs = {
   id?: InputMaybe<Scalars['ID']>;
   personID?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type RootPlanetArgs = {
   id?: InputMaybe<Scalars['ID']>;
   planetID?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type RootSpeciesArgs = {
   id?: InputMaybe<Scalars['ID']>;
   speciesID?: InputMaybe<Scalars['ID']>;
 };
 
-
 export type RootStarshipArgs = {
   id?: InputMaybe<Scalars['ID']>;
   starshipID?: InputMaybe<Scalars['ID']>;
 };
-
 
 export type RootVehicleArgs = {
   id?: InputMaybe<Scalars['ID']>;
@@ -184,7 +177,6 @@ export type Film = Node & {
   vehicleConnection?: Maybe<FilmVehiclesConnection>;
 };
 
-
 /** A single film. */
 export type FilmCharacterConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -192,7 +184,6 @@ export type FilmCharacterConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A single film. */
 export type FilmPlanetConnectionArgs = {
@@ -202,7 +193,6 @@ export type FilmPlanetConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A single film. */
 export type FilmSpeciesConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -211,7 +201,6 @@ export type FilmSpeciesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** A single film. */
 export type FilmStarshipConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -219,7 +208,6 @@ export type FilmStarshipConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A single film. */
 export type FilmVehicleConnectionArgs = {
@@ -307,7 +295,6 @@ export type Person = Node & {
   vehicleConnection?: Maybe<PersonVehiclesConnection>;
 };
 
-
 /** An individual person or character within the Star Wars universe. */
 export type PersonFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -316,7 +303,6 @@ export type PersonFilmConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
-
 /** An individual person or character within the Star Wars universe. */
 export type PersonStarshipConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -324,7 +310,6 @@ export type PersonStarshipConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** An individual person or character within the Star Wars universe. */
 export type PersonVehicleConnectionArgs = {
@@ -427,7 +412,6 @@ export type Planet = Node & {
   terrains?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-
 /**
  * A large mass, planet or planetoid in the Star Wars Universe, at the time of
  * 0 ABY.
@@ -438,7 +422,6 @@ export type PlanetFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /**
  * A large mass, planet or planetoid in the Star Wars Universe, at the time of
@@ -561,7 +544,6 @@ export type Species = Node & {
   skinColors?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
-
 /** A type of person or character within the Star Wars Universe. */
 export type SpeciesFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -569,7 +551,6 @@ export type SpeciesFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A type of person or character within the Star Wars Universe. */
 export type SpeciesPersonConnectionArgs = {
@@ -738,7 +719,6 @@ export type Starship = Node & {
   starshipClass?: Maybe<Scalars['String']>;
 };
 
-
 /** A single transport craft that has hyperdrive capability. */
 export type StarshipFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -746,7 +726,6 @@ export type StarshipFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A single transport craft that has hyperdrive capability. */
 export type StarshipPilotConnectionArgs = {
@@ -902,7 +881,6 @@ export type Vehicle = Node & {
   vehicleClass?: Maybe<Scalars['String']>;
 };
 
-
 /** A single transport craft that does not have hyperdrive capability */
 export type VehicleFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -910,7 +888,6 @@ export type VehicleFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
-
 
 /** A single transport craft that does not have hyperdrive capability */
 export type VehiclePilotConnectionArgs = {
@@ -1303,24 +1280,31 @@ export type VehiclesEdge = {
   node?: Maybe<Vehicle>;
 };
 
-export type AllPeopleQueryVariables = Exact<{ [key: string]: never; }>;
+export type AllPeopleQueryVariables = Exact<{ [key: string]: never }>;
 
-
-export type AllPeopleQuery = { __typename?: 'Root', allPeople?: { __typename?: 'PeopleConnection', edges?: Array<{ __typename?: 'PeopleEdge', node?: { __typename?: 'Person', id: string, name?: string | null } | null } | null> | null } | null };
-
+export type AllPeopleQuery = {
+  __typename?: 'Root';
+  allPeople?: {
+    __typename?: 'PeopleConnection';
+    edges?: Array<{
+      __typename?: 'PeopleEdge';
+      node?: { __typename?: 'Person'; id: string; name?: string | null } | null;
+    } | null> | null;
+  } | null;
+};
 
 export const AllPeopleDocument = gql`
-    query AllPeople {
-  allPeople {
-    edges {
-      node {
-        id
-        name
+  query AllPeople {
+    allPeople {
+      edges {
+        node {
+          id
+          name
+        }
       }
     }
   }
-}
-    `;
+`;
 
 /**
  * __useAllPeopleQuery__
@@ -1337,14 +1321,35 @@ export const AllPeopleDocument = gql`
  *   },
  * });
  */
-export function useAllPeopleQuery(baseOptions?: Apollo.QueryHookOptions<AllPeopleQuery, AllPeopleQueryVariables>) {
-        const options = {...defaultOptions, ...baseOptions}
-        return Apollo.useQuery<AllPeopleQuery, AllPeopleQueryVariables>(AllPeopleDocument, options);
-      }
-export function useAllPeopleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllPeopleQuery, AllPeopleQueryVariables>) {
-          const options = {...defaultOptions, ...baseOptions}
-          return Apollo.useLazyQuery<AllPeopleQuery, AllPeopleQueryVariables>(AllPeopleDocument, options);
-        }
+export function useAllPeopleQuery(
+  baseOptions?: Apollo.QueryHookOptions<
+    AllPeopleQuery,
+    AllPeopleQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<AllPeopleQuery, AllPeopleQueryVariables>(
+    AllPeopleDocument,
+    options,
+  );
+}
+export function useAllPeopleLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<
+    AllPeopleQuery,
+    AllPeopleQueryVariables
+  >,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<AllPeopleQuery, AllPeopleQueryVariables>(
+    AllPeopleDocument,
+    options,
+  );
+}
 export type AllPeopleQueryHookResult = ReturnType<typeof useAllPeopleQuery>;
-export type AllPeopleLazyQueryHookResult = ReturnType<typeof useAllPeopleLazyQuery>;
-export type AllPeopleQueryResult = Apollo.QueryResult<AllPeopleQuery, AllPeopleQueryVariables>;
+export type AllPeopleLazyQueryHookResult = ReturnType<
+  typeof useAllPeopleLazyQuery
+>;
+export type AllPeopleQueryResult = Apollo.QueryResult<
+  AllPeopleQuery,
+  AllPeopleQueryVariables
+>;

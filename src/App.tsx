@@ -1,22 +1,29 @@
 import React from 'react';
-import RootComponent from './root-component';
+import { StatusBar } from 'react-native';
 import { ThemeProvider } from '@react-native-elements/themed';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { NavigationContainer } from '@react-navigation/native';
+import { ApolloProvider } from '@apollo/client';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import SplashScreen from 'react-native-splash-screen';
 
-const client = new ApolloClient({
-  uri: 'https://swapi-graphql.netlify.app/.netlify/functions/index',
-  cache: new InMemoryCache(),
-});
+import { MainNavigator } from './navigation/MainNavigator';
+import { client } from './services/client';
 
-const App = () => (
-  <SafeAreaProvider>
-    <ThemeProvider>
-      <ApolloProvider client={client}>
-        <RootComponent />
-      </ApolloProvider>
-    </ThemeProvider>
-  </SafeAreaProvider>
-);
+export const App = () => {
+  React.useEffect(() => {
+    SplashScreen.hide();
+  });
 
-export default App;
+  return (
+    <SafeAreaProvider>
+      <StatusBar barStyle={'light-content'} />
+      <ThemeProvider>
+        <ApolloProvider client={client}>
+          <NavigationContainer>
+            <MainNavigator />
+          </NavigationContainer>
+        </ApolloProvider>
+      </ThemeProvider>
+    </SafeAreaProvider>
+  );
+};

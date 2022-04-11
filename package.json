@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.10",
+    "@graphql-codegen/named-operations-object": "^2.2.1",
     "@react-native-elements/base": "^4.0.0-rc.0",
     "@react-native-elements/themed": "^4.0.0-rc.0",
     "@react-navigation/bottom-tabs": "^6.3.1",
@@ -20,9 +21,11 @@
     "@react-navigation/native-stack": "^6.6.1",
     "react": "17.0.2",
     "react-native": "0.67.3",
+    "react-native-device-info": "^8.7.0",
     "react-native-safe-area-context": "^4.2.4",
     "react-native-screens": "^3.13.1",
     "react-native-size-matters": "^0.4.0",
+    "react-native-splash-screen": "^3.3.0",
     "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {

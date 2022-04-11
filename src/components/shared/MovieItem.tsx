@@ -8,7 +8,7 @@ import { formatDate } from '../../utils/date';
 
 export interface MovieItemProps {
   film?: Film | null;
-  onPress: (id?: string) => void;
+  onPress: (id?: string, title?: string) => void;
 }
 
 export const MovieItem = ({ film, onPress }: MovieItemProps) => {
@@ -40,7 +40,7 @@ export const MovieItem = ({ film, onPress }: MovieItemProps) => {
         accessibilityRole="button"
         accessibilityHint={`See more details about ${film?.title}`}
         title="See details"
-        onPress={() => onPress(film?.id)}
+        onPress={() => onPress(film?.id, film?.title || '')}
       />
     </Card>
   );

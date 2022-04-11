@@ -49,9 +49,9 @@ export const Characters = ({ navigation }: CharactersProps) => {
     });
   };
 
-  const navigateToDetails = (id?: string) => {
-    if (id) {
-      navigation.navigate('CharacterDetail', { personID: id });
+  const navigateToDetails = (id?: string, title?: string) => {
+    if (id && title) {
+      navigation.navigate('CharacterDetail', { personID: id, title });
     } else {
       Alert.alert(errorTitle, errorMessage);
     }

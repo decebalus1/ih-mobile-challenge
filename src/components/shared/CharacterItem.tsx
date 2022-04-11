@@ -6,7 +6,7 @@ import { Maybe, Person } from '../../__generated__/graphql';
 
 interface CharacterItemProps {
   person?: Maybe<Person>;
-  onPress: (id?: string) => void;
+  onPress: (id?: string, title?: string) => void;
 }
 
 export const CharacterItem = ({ person, onPress }: CharacterItemProps) => {
@@ -18,8 +18,7 @@ export const CharacterItem = ({ person, onPress }: CharacterItemProps) => {
       containerStyle={styles.element}
       accessibilityLabel={`See  more details about ${person?.name}`}
       accessibilityRole="button"
-      onPress={() => onPress(person?.id)}
-    >
+      onPress={() => onPress(person?.id, person?.name || '')}>
       <ListItem.Content>
         <ListItem.Title>{person?.name}</ListItem.Title>
       </ListItem.Content>

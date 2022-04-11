@@ -14,9 +14,9 @@ type MoviesProps = NativeStackScreenProps<MovieStackParamList, 'Movie'>;
 export const Movies = ({ navigation }: MoviesProps) => {
   const { loading, data, error }: AllFilmsQueryResult = useQuery(moviesQuery);
 
-  const navigateToDetails = (id?: string) => {
-    if (id) {
-      navigation.navigate('MovieDetail', { movieID: id });
+  const navigateToDetails = (id?: string, title?: string) => {
+    if (id && title) {
+      navigation.navigate('MovieDetail', { movieID: id, title });
     } else {
       Alert.alert(errorTitle, errorMessage);
     }

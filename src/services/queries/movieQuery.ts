@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
-export const moviesQuery = gql`
+export const movieQuery = gql`
   query Film($filmId: ID) {
-    film(filmID: $filmId) {
+    film(id: $filmId) {
       created
       director
       edited

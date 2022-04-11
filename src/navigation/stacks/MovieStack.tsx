@@ -7,7 +7,7 @@ import { tabBackgroundColor } from '../../constants/colors';
 
 export type MovieStackParamList = {
   Movie: undefined;
-  MovieDetail: { movieID: string };
+  MovieDetail: { movieID: string; title: string };
 };
 
 const Stack = createNativeStackNavigator();
@@ -19,8 +19,7 @@ export const MovieStack = () => {
         headerTintColor: 'white',
         headerBackTitle: '',
         headerStyle: { backgroundColor: tabBackgroundColor },
-      }}
-    >
+      }}>
       <Stack.Screen name="Movie" component={Movies} />
       <Stack.Screen
         name="MovieDetail"

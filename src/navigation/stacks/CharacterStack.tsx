@@ -7,7 +7,7 @@ import { tabBackgroundColor } from '../../constants/colors';
 
 export type CharacterStackParamList = {
   Characters: undefined;
-  CharacterDetail: { personID: string };
+  CharacterDetail: { personID: string; title: string };
 };
 
 const Stack = createNativeStackNavigator();
@@ -19,8 +19,7 @@ export const CharactersStack = () => {
         headerTintColor: 'white',
         headerBackTitle: '',
         headerStyle: { backgroundColor: tabBackgroundColor },
-      }}
-    >
+      }}>
       <Stack.Screen name="Characters" component={Characters} />
       <Stack.Screen
         name="CharacterDetail"

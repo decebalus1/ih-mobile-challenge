@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const personQuery = gql`
   query Person($personId: ID) {
-    person(personID: $personId) {
+    person(id: $personId) {
       birthYear
       created
       edited

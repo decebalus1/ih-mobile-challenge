@@ -2,15 +2,9 @@ import { gql } from '@apollo/client';
 import * as Apollo from '@apollo/client';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = {
-  [K in keyof T]: T[K];
-};
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]?: Maybe<T[SubKey]>;
-};
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
-  [SubKey in K]: Maybe<T[SubKey]>;
-};
+export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
 const defaultOptions = {} as const;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -49,6 +43,7 @@ export type Film = Node & {
   vehicleConnection?: Maybe<FilmVehiclesConnection>;
 };
 
+
 /** A single film. */
 export type FilmCharacterConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -56,6 +51,7 @@ export type FilmCharacterConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 /** A single film. */
 export type FilmPlanetConnectionArgs = {
@@ -65,6 +61,7 @@ export type FilmPlanetConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** A single film. */
 export type FilmSpeciesConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -73,6 +70,7 @@ export type FilmSpeciesConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** A single film. */
 export type FilmStarshipConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -80,6 +78,7 @@ export type FilmStarshipConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 /** A single film. */
 export type FilmVehicleConnectionArgs = {
@@ -393,6 +392,7 @@ export type Person = Node & {
   vehicleConnection?: Maybe<PersonVehiclesConnection>;
 };
 
+
 /** An individual person or character within the Star Wars universe. */
 export type PersonFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -401,6 +401,7 @@ export type PersonFilmConnectionArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+
 /** An individual person or character within the Star Wars universe. */
 export type PersonStarshipConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -408,6 +409,7 @@ export type PersonStarshipConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 /** An individual person or character within the Star Wars universe. */
 export type PersonVehicleConnectionArgs = {
@@ -565,6 +567,7 @@ export type Planet = Node & {
   terrains?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
+
 /**
  * A large mass, planet or planetoid in the Star Wars Universe, at the time of
  * 0 ABY.
@@ -575,6 +578,7 @@ export type PlanetFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 /**
  * A large mass, planet or planetoid in the Star Wars Universe, at the time of
@@ -707,12 +711,14 @@ export type Root = {
   vehicle?: Maybe<Vehicle>;
 };
 
+
 export type RootAllFilmsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type RootAllPeopleArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -721,12 +727,14 @@ export type RootAllPeopleArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type RootAllPlanetsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type RootAllSpeciesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -735,12 +743,14 @@ export type RootAllSpeciesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type RootAllStarshipsArgs = {
   after?: InputMaybe<Scalars['String']>;
   before?: InputMaybe<Scalars['String']>;
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 export type RootAllVehiclesArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -749,34 +759,41 @@ export type RootAllVehiclesArgs = {
   last?: InputMaybe<Scalars['Int']>;
 };
 
+
 export type RootFilmArgs = {
   filmID?: InputMaybe<Scalars['ID']>;
   id?: InputMaybe<Scalars['ID']>;
 };
 
+
 export type RootNodeArgs = {
   id: Scalars['ID'];
 };
+
 
 export type RootPersonArgs = {
   id?: InputMaybe<Scalars['ID']>;
   personID?: InputMaybe<Scalars['ID']>;
 };
 
+
 export type RootPlanetArgs = {
   id?: InputMaybe<Scalars['ID']>;
   planetID?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type RootSpeciesArgs = {
   id?: InputMaybe<Scalars['ID']>;
   speciesID?: InputMaybe<Scalars['ID']>;
 };
 
+
 export type RootStarshipArgs = {
   id?: InputMaybe<Scalars['ID']>;
   starshipID?: InputMaybe<Scalars['ID']>;
 };
+
 
 export type RootVehicleArgs = {
   id?: InputMaybe<Scalars['ID']>;
@@ -825,6 +842,7 @@ export type Species = Node & {
   skinColors?: Maybe<Array<Maybe<Scalars['String']>>>;
 };
 
+
 /** A type of person or character within the Star Wars Universe. */
 export type SpeciesFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -832,6 +850,7 @@ export type SpeciesFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 /** A type of person or character within the Star Wars Universe. */
 export type SpeciesPersonConnectionArgs = {
@@ -1000,6 +1019,7 @@ export type Starship = Node & {
   starshipClass?: Maybe<Scalars['String']>;
 };
 
+
 /** A single transport craft that has hyperdrive capability. */
 export type StarshipFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -1007,6 +1027,7 @@ export type StarshipFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 /** A single transport craft that has hyperdrive capability. */
 export type StarshipPilotConnectionArgs = {
@@ -1162,6 +1183,7 @@ export type Vehicle = Node & {
   vehicleClass?: Maybe<Scalars['String']>;
 };
 
+
 /** A single transport craft that does not have hyperdrive capability */
 export type VehicleFilmConnectionArgs = {
   after?: InputMaybe<Scalars['String']>;
@@ -1169,6 +1191,7 @@ export type VehicleFilmConnectionArgs = {
   first?: InputMaybe<Scalars['Int']>;
   last?: InputMaybe<Scalars['Int']>;
 };
+
 
 /** A single transport craft that does not have hyperdrive capability */
 export type VehiclePilotConnectionArgs = {
@@ -1284,103 +1307,45 @@ export type FilmQueryVariables = Exact<{
   filmId?: InputMaybe<Scalars['ID']>;
 }>;
 
-export type FilmQuery = {
-  __typename?: 'Root';
-  film?: {
-    __typename?: 'Film';
-    created?: string | null;
-    director?: string | null;
-    edited?: string | null;
-    episodeID?: number | null;
-    id: string;
-    producers?: Array<string | null> | null;
-    releaseDate?: string | null;
-    title?: string | null;
-    openingCrawl?: string | null;
-  } | null;
-};
 
-export type AllFilmsQueryVariables = Exact<{ [key: string]: never }>;
+export type FilmQuery = { __typename?: 'Root', film?: { __typename?: 'Film', created?: string | null, director?: string | null, edited?: string | null, episodeID?: number | null, id: string, producers?: Array<string | null> | null, releaseDate?: string | null, title?: string | null, openingCrawl?: string | null } | null };
 
-export type AllFilmsQuery = {
-  __typename?: 'Root';
-  allFilms?: {
-    __typename?: 'FilmsConnection';
-    edges?: Array<{
-      __typename?: 'FilmsEdge';
-      node?: {
-        __typename?: 'Film';
-        id: string;
-        title?: string | null;
-        director?: string | null;
-        releaseDate?: string | null;
-      } | null;
-    } | null> | null;
-  } | null;
-};
+export type AllFilmsQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type AllFilmsQuery = { __typename?: 'Root', allFilms?: { __typename?: 'FilmsConnection', edges?: Array<{ __typename?: 'FilmsEdge', node?: { __typename?: 'Film', id: string, title?: string | null, director?: string | null, releaseDate?: string | null } | null } | null> | null } | null };
 
 export type AllPeopleQueryVariables = Exact<{
   first?: InputMaybe<Scalars['Int']>;
   after?: InputMaybe<Scalars['String']>;
 }>;
 
-export type AllPeopleQuery = {
-  __typename?: 'Root';
-  allPeople?: {
-    __typename?: 'PeopleConnection';
-    totalCount?: number | null;
-    edges?: Array<{
-      __typename?: 'PeopleEdge';
-      node?: { __typename?: 'Person'; id: string; name?: string | null } | null;
-    } | null> | null;
-    pageInfo: {
-      __typename?: 'PageInfo';
-      hasNextPage: boolean;
-      endCursor?: string | null;
-    };
-  } | null;
-};
+
+export type AllPeopleQuery = { __typename?: 'Root', allPeople?: { __typename?: 'PeopleConnection', totalCount?: number | null, edges?: Array<{ __typename?: 'PeopleEdge', node?: { __typename?: 'Person', id: string, name?: string | null } | null } | null> | null, pageInfo: { __typename?: 'PageInfo', hasNextPage: boolean, endCursor?: string | null } } | null };
 
 export type PersonQueryVariables = Exact<{
   personId?: InputMaybe<Scalars['ID']>;
 }>;
 
-export type PersonQuery = {
-  __typename?: 'Root';
-  person?: {
-    __typename?: 'Person';
-    birthYear?: string | null;
-    created?: string | null;
-    edited?: string | null;
-    eyeColor?: string | null;
-    gender?: string | null;
-    hairColor?: string | null;
-    height?: number | null;
-    name?: string | null;
-    skinColor?: string | null;
-    homeworld?: {
-      __typename?: 'Planet';
-      name?: string | null;
-      population?: number | null;
-    } | null;
-  } | null;
-};
+
+export type PersonQuery = { __typename?: 'Root', person?: { __typename?: 'Person', birthYear?: string | null, created?: string | null, edited?: string | null, eyeColor?: string | null, gender?: string | null, hairColor?: string | null, height?: number | null, name?: string | null, skinColor?: string | null, homeworld?: { __typename?: 'Planet', name?: string | null, population?: number | null } | null } | null };
+
 
 export const FilmDocument = gql`
-  query Film($filmId: ID) {
-    film(filmID: $filmId) {
-      created
-      director
-      edited
-      episodeID
-      id
-      producers
-      releaseDate
-      title
-      openingCrawl
-    }
+    query Film($filmId: ID) {
+  film(id: $filmId) {
+    created
+    director
+    edited
+    episodeID
+    id
+    producers
+    releaseDate
+    title
+    openingCrawl
   }
-`;
+}
+    `;
 
 /**
  * __useFilmQuery__
@@ -1398,38 +1363,31 @@ export const FilmDocument = gql`
  *   },
  * });
  */
-export function useFilmQuery(
-  baseOptions?: Apollo.QueryHookOptions<FilmQuery, FilmQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<FilmQuery, FilmQueryVariables>(FilmDocument, options);
-}
-export function useFilmLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<FilmQuery, FilmQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<FilmQuery, FilmQueryVariables>(
-    FilmDocument,
-    options,
-  );
-}
+export function useFilmQuery(baseOptions?: Apollo.QueryHookOptions<FilmQuery, FilmQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<FilmQuery, FilmQueryVariables>(FilmDocument, options);
+      }
+export function useFilmLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<FilmQuery, FilmQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<FilmQuery, FilmQueryVariables>(FilmDocument, options);
+        }
 export type FilmQueryHookResult = ReturnType<typeof useFilmQuery>;
 export type FilmLazyQueryHookResult = ReturnType<typeof useFilmLazyQuery>;
 export type FilmQueryResult = Apollo.QueryResult<FilmQuery, FilmQueryVariables>;
 export const AllFilmsDocument = gql`
-  query allFilms {
-    allFilms {
-      edges {
-        node {
-          id
-          title
-          director
-          releaseDate
-        }
+    query allFilms {
+  allFilms {
+    edges {
+      node {
+        id
+        title
+        director
+        releaseDate
       }
     }
   }
-`;
+}
+    `;
 
 /**
  * __useAllFilmsQuery__
@@ -1446,52 +1404,34 @@ export const AllFilmsDocument = gql`
  *   },
  * });
  */
-export function useAllFilmsQuery(
-  baseOptions?: Apollo.QueryHookOptions<AllFilmsQuery, AllFilmsQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllFilmsQuery, AllFilmsQueryVariables>(
-    AllFilmsDocument,
-    options,
-  );
-}
-export function useAllFilmsLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllFilmsQuery,
-    AllFilmsQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllFilmsQuery, AllFilmsQueryVariables>(
-    AllFilmsDocument,
-    options,
-  );
-}
-export type AllFilmsQueryHookResult = ReturnType<typeof useAllFilmsQuery>;
-export type AllFilmsLazyQueryHookResult = ReturnType<
-  typeof useAllFilmsLazyQuery
->;
-export type AllFilmsQueryResult = Apollo.QueryResult<
-  AllFilmsQuery,
-  AllFilmsQueryVariables
->;
-export const AllPeopleDocument = gql`
-  query allPeople($first: Int, $after: String) {
-    allPeople(first: $first, after: $after) {
-      totalCount
-      edges {
-        node {
-          id
-          name
-        }
+export function useAllFilmsQuery(baseOptions?: Apollo.QueryHookOptions<AllFilmsQuery, AllFilmsQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AllFilmsQuery, AllFilmsQueryVariables>(AllFilmsDocument, options);
       }
-      pageInfo {
-        hasNextPage
-        endCursor
+export function useAllFilmsLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllFilmsQuery, AllFilmsQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AllFilmsQuery, AllFilmsQueryVariables>(AllFilmsDocument, options);
+        }
+export type AllFilmsQueryHookResult = ReturnType<typeof useAllFilmsQuery>;
+export type AllFilmsLazyQueryHookResult = ReturnType<typeof useAllFilmsLazyQuery>;
+export type AllFilmsQueryResult = Apollo.QueryResult<AllFilmsQuery, AllFilmsQueryVariables>;
+export const AllPeopleDocument = gql`
+    query allPeople($first: Int, $after: String) {
+  allPeople(first: $first, after: $after) {
+    totalCount
+    edges {
+      node {
+        id
+        name
       }
     }
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
   }
-`;
+}
+    `;
 
 /**
  * __useAllPeopleQuery__
@@ -1510,57 +1450,36 @@ export const AllPeopleDocument = gql`
  *   },
  * });
  */
-export function useAllPeopleQuery(
-  baseOptions?: Apollo.QueryHookOptions<
-    AllPeopleQuery,
-    AllPeopleQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<AllPeopleQuery, AllPeopleQueryVariables>(
-    AllPeopleDocument,
-    options,
-  );
-}
-export function useAllPeopleLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<
-    AllPeopleQuery,
-    AllPeopleQueryVariables
-  >,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<AllPeopleQuery, AllPeopleQueryVariables>(
-    AllPeopleDocument,
-    options,
-  );
-}
-export type AllPeopleQueryHookResult = ReturnType<typeof useAllPeopleQuery>;
-export type AllPeopleLazyQueryHookResult = ReturnType<
-  typeof useAllPeopleLazyQuery
->;
-export type AllPeopleQueryResult = Apollo.QueryResult<
-  AllPeopleQuery,
-  AllPeopleQueryVariables
->;
-export const PersonDocument = gql`
-  query Person($personId: ID) {
-    person(personID: $personId) {
-      birthYear
-      created
-      edited
-      eyeColor
-      gender
-      hairColor
-      height
-      homeworld {
-        name
-        population
+export function useAllPeopleQuery(baseOptions?: Apollo.QueryHookOptions<AllPeopleQuery, AllPeopleQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<AllPeopleQuery, AllPeopleQueryVariables>(AllPeopleDocument, options);
       }
+export function useAllPeopleLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<AllPeopleQuery, AllPeopleQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<AllPeopleQuery, AllPeopleQueryVariables>(AllPeopleDocument, options);
+        }
+export type AllPeopleQueryHookResult = ReturnType<typeof useAllPeopleQuery>;
+export type AllPeopleLazyQueryHookResult = ReturnType<typeof useAllPeopleLazyQuery>;
+export type AllPeopleQueryResult = Apollo.QueryResult<AllPeopleQuery, AllPeopleQueryVariables>;
+export const PersonDocument = gql`
+    query Person($personId: ID) {
+  person(id: $personId) {
+    birthYear
+    created
+    edited
+    eyeColor
+    gender
+    hairColor
+    height
+    homeworld {
       name
-      skinColor
+      population
     }
+    name
+    skinColor
   }
-`;
+}
+    `;
 
 /**
  * __usePersonQuery__
@@ -1578,35 +1497,22 @@ export const PersonDocument = gql`
  *   },
  * });
  */
-export function usePersonQuery(
-  baseOptions?: Apollo.QueryHookOptions<PersonQuery, PersonQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useQuery<PersonQuery, PersonQueryVariables>(
-    PersonDocument,
-    options,
-  );
-}
-export function usePersonLazyQuery(
-  baseOptions?: Apollo.LazyQueryHookOptions<PersonQuery, PersonQueryVariables>,
-) {
-  const options = { ...defaultOptions, ...baseOptions };
-  return Apollo.useLazyQuery<PersonQuery, PersonQueryVariables>(
-    PersonDocument,
-    options,
-  );
-}
+export function usePersonQuery(baseOptions?: Apollo.QueryHookOptions<PersonQuery, PersonQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<PersonQuery, PersonQueryVariables>(PersonDocument, options);
+      }
+export function usePersonLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<PersonQuery, PersonQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<PersonQuery, PersonQueryVariables>(PersonDocument, options);
+        }
 export type PersonQueryHookResult = ReturnType<typeof usePersonQuery>;
 export type PersonLazyQueryHookResult = ReturnType<typeof usePersonLazyQuery>;
-export type PersonQueryResult = Apollo.QueryResult<
-  PersonQuery,
-  PersonQueryVariables
->;
+export type PersonQueryResult = Apollo.QueryResult<PersonQuery, PersonQueryVariables>;
 export const namedOperations = {
   Query: {
     Film: 'Film',
     allFilms: 'allFilms',
     allPeople: 'allPeople',
-    Person: 'Person',
-  },
-};
+    Person: 'Person'
+  }
+}

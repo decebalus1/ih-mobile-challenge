@@ -3,7 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Button, SearchBar } from '@react-native-elements/themed';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { spaceBlue, tabBackgroundColor } from '../../constants/colors';
+import { tabBackgroundColor } from '../../constants/colors';
 
 export const Search = () => {
   const [search, setSearch] = React.useState('');
@@ -22,7 +22,7 @@ export const Search = () => {
           icon={
             <MaterialCommunityIcons
               name="filter-variant"
-              color={spaceBlue}
+              color="white"
               size={25}
             />
           }

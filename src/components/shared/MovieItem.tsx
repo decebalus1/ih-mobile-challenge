@@ -18,6 +18,7 @@ export const MovieItem = ({ film, onPress }: MovieItemProps) => {
       {film?.title && <Card.Title>{film.title}</Card.Title>}
       <Card.Divider />
       <Card.Image
+        accessible={false}
         style={styles.cardImage}
         source={require('../../assets/movie_default.png')}
       />
@@ -36,6 +37,8 @@ export const MovieItem = ({ film, onPress }: MovieItemProps) => {
       <Button
         icon={<Icon name="code" color={spaceBlue} iconStyle={styles.icon} />}
         buttonStyle={styles.button}
+        accessibilityRole="button"
+        accessibilityHint={`See more details about ${film?.title}`}
         title="See details"
         onPress={() => onPress(film?.id)}
       />
@@ -48,6 +51,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    paddingVertical: 5,
   },
   card: {
     borderRadius: 10,

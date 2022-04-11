@@ -5,15 +5,24 @@ import {
   FlatList,
   RefreshControl,
   StyleSheet,
+  Alert,
 } from 'react-native';
 import { useLazyQuery } from '@apollo/client';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 import { peopleQuery } from '../../services/queries/peopleQuery';
 import { Loading, CharacterItem, Error } from '../shared';
 import { PAGE_LIMIT } from '../../constants/services';
 import { SpeciesPeopleEdge } from '../../__generated__/graphql';
+import { CharacterStackParamList } from '../../navigation/stacks/CharacterStack';
+import { errorTitle, errorMessage } from '../../constants/appTexts';
 
-export const Characters = () => {
+type CharactersProps = NativeStackScreenProps<
+  CharacterStackParamList,
+  'Characters'
+>;
+
+export const Characters = ({ navigation }: CharactersProps) => {
   const [peopleData, setPeopleData] = React.useState<SpeciesPeopleEdge[]>([]);
   const [getPeople, { loading, data, error }] = useLazyQuery(peopleQuery);
 
@@ -40,8 +49,12 @@ export const Characters = () => {
     });
   };
 
-  const navigateToDetails = () => {
-    // TO DO
+  const navigateToDetails = (id?: string) => {
+    if (id) {
+      navigation.navigate('CharacterDetail', { personID: id });
+    } else {
+      Alert.alert(errorTitle, errorMessage);
+    }
   };
 
   if (loading) {

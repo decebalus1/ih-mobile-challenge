@@ -16,6 +16,8 @@ export const CharacterItem = ({ person, onPress }: CharacterItemProps) => {
       key={person?.id}
       style={styles.element}
       containerStyle={styles.element}
+      accessibilityLabel={`See  more details about ${person?.name}`}
+      accessibilityRole="button"
       onPress={() => onPress(person?.id)}
     >
       <ListItem.Content>

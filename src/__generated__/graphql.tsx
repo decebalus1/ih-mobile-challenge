@@ -1280,6 +1280,26 @@ export type VehiclesEdge = {
   node?: Maybe<Vehicle>;
 };
 
+export type FilmQueryVariables = Exact<{
+  filmId?: InputMaybe<Scalars['ID']>;
+}>;
+
+export type FilmQuery = {
+  __typename?: 'Root';
+  film?: {
+    __typename?: 'Film';
+    created?: string | null;
+    director?: string | null;
+    edited?: string | null;
+    episodeID?: number | null;
+    id: string;
+    producers?: Array<string | null> | null;
+    releaseDate?: string | null;
+    title?: string | null;
+    openingCrawl?: string | null;
+  } | null;
+};
+
 export type AllFilmsQueryVariables = Exact<{ [key: string]: never }>;
 
 export type AllFilmsQuery = {
@@ -1321,6 +1341,81 @@ export type AllPeopleQuery = {
   } | null;
 };
 
+export type PersonQueryVariables = Exact<{
+  personId?: InputMaybe<Scalars['ID']>;
+}>;
+
+export type PersonQuery = {
+  __typename?: 'Root';
+  person?: {
+    __typename?: 'Person';
+    birthYear?: string | null;
+    created?: string | null;
+    edited?: string | null;
+    eyeColor?: string | null;
+    gender?: string | null;
+    hairColor?: string | null;
+    height?: number | null;
+    name?: string | null;
+    skinColor?: string | null;
+    homeworld?: {
+      __typename?: 'Planet';
+      name?: string | null;
+      population?: number | null;
+    } | null;
+  } | null;
+};
+
+export const FilmDocument = gql`
+  query Film($filmId: ID) {
+    film(filmID: $filmId) {
+      created
+      director
+      edited
+      episodeID
+      id
+      producers
+      releaseDate
+      title
+      openingCrawl
+    }
+  }
+`;
+
+/**
+ * __useFilmQuery__
+ *
+ * To run a query within a React component, call `useFilmQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFilmQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFilmQuery({
+ *   variables: {
+ *      filmId: // value for 'filmId'
+ *   },
+ * });
+ */
+export function useFilmQuery(
+  baseOptions?: Apollo.QueryHookOptions<FilmQuery, FilmQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<FilmQuery, FilmQueryVariables>(FilmDocument, options);
+}
+export function useFilmLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<FilmQuery, FilmQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<FilmQuery, FilmQueryVariables>(
+    FilmDocument,
+    options,
+  );
+}
+export type FilmQueryHookResult = ReturnType<typeof useFilmQuery>;
+export type FilmLazyQueryHookResult = ReturnType<typeof useFilmLazyQuery>;
+export type FilmQueryResult = Apollo.QueryResult<FilmQuery, FilmQueryVariables>;
 export const AllFilmsDocument = gql`
   query allFilms {
     allFilms {
@@ -1330,7 +1425,6 @@ export const AllFilmsDocument = gql`
           title
           director
           releaseDate
-          title
         }
       }
     }
@@ -1448,9 +1542,71 @@ export type AllPeopleQueryResult = Apollo.QueryResult<
   AllPeopleQuery,
   AllPeopleQueryVariables
 >;
+export const PersonDocument = gql`
+  query Person($personId: ID) {
+    person(personID: $personId) {
+      birthYear
+      created
+      edited
+      eyeColor
+      gender
+      hairColor
+      height
+      homeworld {
+        name
+        population
+      }
+      name
+      skinColor
+    }
+  }
+`;
+
+/**
+ * __usePersonQuery__
+ *
+ * To run a query within a React component, call `usePersonQuery` and pass it any options that fit your needs.
+ * When your component renders, `usePersonQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = usePersonQuery({
+ *   variables: {
+ *      personId: // value for 'personId'
+ *   },
+ * });
+ */
+export function usePersonQuery(
+  baseOptions?: Apollo.QueryHookOptions<PersonQuery, PersonQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useQuery<PersonQuery, PersonQueryVariables>(
+    PersonDocument,
+    options,
+  );
+}
+export function usePersonLazyQuery(
+  baseOptions?: Apollo.LazyQueryHookOptions<PersonQuery, PersonQueryVariables>,
+) {
+  const options = { ...defaultOptions, ...baseOptions };
+  return Apollo.useLazyQuery<PersonQuery, PersonQueryVariables>(
+    PersonDocument,
+    options,
+  );
+}
+export type PersonQueryHookResult = ReturnType<typeof usePersonQuery>;
+export type PersonLazyQueryHookResult = ReturnType<typeof usePersonLazyQuery>;
+export type PersonQueryResult = Apollo.QueryResult<
+  PersonQuery,
+  PersonQueryVariables
+>;
 export const namedOperations = {
   Query: {
+    Film: 'Film',
     allFilms: 'allFilms',
     allPeople: 'allPeople',
+    Person: 'Person',
   },
 };

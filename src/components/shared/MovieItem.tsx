@@ -15,7 +15,7 @@ export const MovieItem = ({ film, onPress }: MovieItemProps) => {
   const formatedReleaseDate = formatDate(film?.releaseDate);
   return (
     <Card containerStyle={styles.card}>
-      {film?.title && <Card.Title>{film.title}</Card.Title>}
+      {film?.title && <Card.Title testID="film-title">{film.title}</Card.Title>}
       <Card.Divider />
       <Card.Image
         accessible={false}
@@ -37,6 +37,7 @@ export const MovieItem = ({ film, onPress }: MovieItemProps) => {
       <Button
         icon={<Icon name="code" color={spaceBlue} iconStyle={styles.icon} />}
         buttonStyle={styles.button}
+        testID="see-details"
         accessibilityRole="button"
         accessibilityHint={`See more details about ${film?.title}`}
         title="See details"

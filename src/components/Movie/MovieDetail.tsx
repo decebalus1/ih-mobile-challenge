@@ -17,6 +17,7 @@ type MovieDetailProps = NativeStackScreenProps<
 >;
 
 export const MovieDetail = ({ navigation, route }: MovieDetailProps) => {
+  const [noOfLines, setNoOfLines] = React.useState(3);
   const [getMovieDetails, { loading, data, error }] = useLazyQuery(movieQuery);
 
   React.useEffect(() => {
@@ -70,27 +71,37 @@ export const MovieDetail = ({ navigation, route }: MovieDetailProps) => {
         />
         <View style={styles.infoContainer}>
           {!!film?.openingCrawl && (
-            <Text>{getStringWithoutLineBreaks(film?.openingCrawl)}</Text>
+            <>
+              <Text numberOfLines={noOfLines}>
+                {getStringWithoutLineBreaks(film?.openingCrawl)}
+              </Text>
+              <Text
+                style={styles.link}
+                onPress={() => setNoOfLines(noOfLines === 0 ? 3 : 0)}
+              >
+                {noOfLines ? 'See More' : 'See Less'}
+              </Text>
+            </>
           )}
+          <Text h4 style={styles.header}>
+            Production
+          </Text>
+          <Card containerStyle={styles.card}>
+            {!!film?.director && (
+              <>
+                <Row leftText="Director" rightText={film.director} />
+                <Card.Divider />
+              </>
+            )}
+            {!!releasedDate && (
+              <>
+                <Row leftText="ReleaseDate" rightText={releasedDate} />
+                <Card.Divider />
+              </>
+            )}
+            {!!producers && <Row leftText="Producers" rightText={producers} />}
+          </Card>
         </View>
-        <Text h4 style={styles.header}>
-          Production
-        </Text>
-        <Card containerStyle={styles.card}>
-          {!!film?.director && (
-            <>
-              <Row leftText="Director" rightText={film.director} />
-              <Card.Divider />
-            </>
-          )}
-          {!!releasedDate && (
-            <>
-              <Row leftText="ReleaseDate" rightText={releasedDate} />
-              <Card.Divider />
-            </>
-          )}
-          {!!producers && <Row leftText="Producers" rightText={producers} />}
-        </Card>
       </ScrollView>
     </View>
   );
@@ -124,5 +135,8 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 2,
     elevation: 5,
+  },
+  link: {
+    color: 'blue',
   },
 });

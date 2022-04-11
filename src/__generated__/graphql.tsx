@@ -1363,6 +1363,11 @@ export type PersonQuery = {
       name?: string | null;
       population?: number | null;
     } | null;
+    species?: {
+      __typename?: 'Species';
+      name?: string | null;
+      language?: string | null;
+    } | null;
   } | null;
 };
 
@@ -1558,6 +1563,10 @@ export const PersonDocument = gql`
       }
       name
       skinColor
+      species {
+        name
+        language
+      }
     }
   }
 `;

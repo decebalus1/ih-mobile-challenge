@@ -16,6 +16,10 @@ export const personQuery = gql`
       }
       name
       skinColor
+      species {
+        name
+        language
+      }
     }
   }
 `;

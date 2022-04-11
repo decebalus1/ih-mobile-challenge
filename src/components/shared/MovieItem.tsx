@@ -1,10 +1,11 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { Button, Card, Icon } from '@react-native-elements/themed';
 
 import { Film } from '../../__generated__/graphql';
 import { spaceBlue } from '../../constants/colors';
 import { formatDate } from '../../utils/date';
+import { Row } from './Row';
 
 export interface MovieItemProps {
   film?: Film | null;
@@ -22,17 +23,12 @@ export const MovieItem = ({ film, onPress }: MovieItemProps) => {
         style={styles.cardImage}
         source={require('../../assets/movie_default.png')}
       />
-      {film?.director && (
-        <View style={styles.details}>
-          <Text>Director</Text>
-          <Text>{film.director}</Text>
-        </View>
+      {!!film?.director && (
+        <Row leftText="Director" rightText={film.director} />
       )}
-      {formatedReleaseDate && (
-        <View style={styles.details}>
-          <Text>Release date</Text>
-          <Text>{formatedReleaseDate}</Text>
-        </View>
+
+      {!!formatedReleaseDate && (
+        <Row leftText="Release date" rightText={formatedReleaseDate} />
       )}
       <Button
         icon={<Icon name="code" color={spaceBlue} iconStyle={styles.icon} />}
@@ -48,12 +44,6 @@ export const MovieItem = ({ film, onPress }: MovieItemProps) => {
 };
 
 const styles = StyleSheet.create({
-  details: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingVertical: 5,
-  },
   card: {
     borderRadius: 10,
     shadowColor: '#000000',
